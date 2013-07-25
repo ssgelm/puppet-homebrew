@@ -18,18 +18,18 @@ class homebrew(
   repository { $installdir:
     source => 'mxcl/homebrew',
     user   => $::boxen_user,
-    require => File[$installdir]
+    require => Exec['chmod_installdir']
   }
 
   File {
     require => Repository[$installdir]
   }
 
-  file { $installdir:
-    ensure => 'directory',
-    owner => 'root',
-    group => 'admin',
-    mode => '0775'
+  exec { 'chmod_installdir':
+    command => "/bin/chmod g+rwx $installdir; /usr/bin/chgrp admin $installdir",
+    onlyif => "ls $installdir && [[ `ls -ld /usr/local | cut -d\  -f6` \!= "admin" ]]",
+    refreshonly => true,
+    user => root
   }
 
   file {
