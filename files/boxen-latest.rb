@@ -1,4 +1,4 @@
-require "boxen-monkeypatches"
+# require "boxen-monkeypatches"
 
 # A custom Homebrew command that gives us the latest available version
 # for a given formula. This allows us to avoid the terrifying prospect
