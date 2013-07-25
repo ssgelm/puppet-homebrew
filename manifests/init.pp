@@ -26,7 +26,7 @@ class homebrew(
   }
 
   exec { 'chmod_installdir':
-    command => "/bin/chmod g+rwx $installdir; /usr/bin/chgrp admin $installdir",
+    command => "mkdir -p /usr/local; /bin/chmod g+rwx $installdir; /usr/bin/chgrp admin $installdir",
     onlyif => "ls $installdir && [[ `ls -ld /usr/local | cut -d' ' -f6` != 'admin' ]]",
     user => root
   }
