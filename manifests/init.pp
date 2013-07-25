@@ -17,11 +17,19 @@ class homebrew(
 
   repository { $installdir:
     source => 'mxcl/homebrew',
-    user   => $::boxen_user
+    user   => $::boxen_user,
+    require => File[$installdir]
   }
 
   File {
     require => Repository[$installdir]
+  }
+
+  file { $installdir:
+    ensure => 'directory',
+    owner => 'root',
+    group => 'admin',
+    mode => '0775'
   }
 
   file {
