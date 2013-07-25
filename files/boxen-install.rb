@@ -1,4 +1,4 @@
-require "boxen-monkeypatches"
+# require "boxen-monkeypatches"
 require "cmd/install"
 
 # A custom Homebrew command that loads our monkeypatches.

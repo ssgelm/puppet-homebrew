@@ -31,19 +31,19 @@ class homebrew(
     # Environment Variables
     "${boxen::config::envdir}/homebrew.sh":
       content => template('homebrew/env.sh.erb') ;
-    "${boxen::config::envdir}/cflags.sh":
-      source  => 'puppet:///modules/homebrew/cflags.sh' ;
-    "${boxen::config::envdir}/ldflags.sh":
-      source  => 'puppet:///modules/homebrew/ldflags.sh' ;
+    /*"${boxen::config::envdir}/cflags.sh":*/
+    /*  source  => 'puppet:///modules/homebrew/cflags.sh' ;*/
+    /*"${boxen::config::envdir}/ldflags.sh":*/
+    /*  source  => 'puppet:///modules/homebrew/ldflags.sh' ;*/
 
     # shim for monkeypatches
-    "${installdir}/Library/Homebrew/boxen-monkeypatches.rb":
-      source  => 'puppet:///modules/homebrew/boxen-monkeypatches.rb' ;
+    /*"${installdir}/Library/Homebrew/boxen-monkeypatches.rb":*/
+    /*  source  => 'puppet:///modules/homebrew/boxen-monkeypatches.rb' ;*/
     "${cmddir}/boxen-latest.rb":
       source  => 'puppet:///modules/homebrew/boxen-latest.rb' ;
     "${cmddir}/boxen-install.rb":
       source  => 'puppet:///modules/homebrew/boxen-install.rb' ;
-    "${installdir}/Library/Homebrew/cmd/boxen-upgrade.rb":
+    "${cmddir}/boxen-upgrade.rb":
       source  => 'puppet:///modules/homebrew/boxen-upgrade.rb' ;
   }
 }
