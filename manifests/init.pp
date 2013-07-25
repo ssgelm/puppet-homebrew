@@ -27,7 +27,7 @@ class homebrew(
 
   exec { 'chmod_installdir':
     command => "mkdir -p /usr/local; /bin/chmod g+rwx $installdir; /usr/bin/chgrp admin $installdir",
-    onlyif => "[[ `ls -ld $installdir | cut -d' ' -f6` != 'admin' ]]",
+    unless => "test `stat -f %g $installdir` -eq `grep ^admin: /etc/group | cut -d: -f3`",
     user => root
   }
 
